@@ -7,7 +7,7 @@ def readme():
 
 
 setup(name='gallerist-azurestorage',
-      version='0.0.2',
+      version='0.0.3',
       description='Azure Storage file store for Gallerist',
       long_description=readme(),
       long_description_content_type='text/markdown',
