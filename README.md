@@ -1,3 +1,8 @@
+[![Build](https://github.com/Neoteroi/Gallerist-AzureStorage/actions/workflows/build.yml/badge.svg)](https://github.com/Neoteroi/Gallerist-AzureStorage/actions/workflows/build.yml)
+[![pypi](https://img.shields.io/pypi/v/gallerist-azurestorage.svg)](https://pypi.python.org/pypi/gallerist-azurestorage)
+[![versions](https://img.shields.io/pypi/pyversions/gallerist-azurestorage.svg)](https://github.com/Neoteroi/Gallerist-AzureStorage)
+[![license](https://img.shields.io/github/license/Neoteroi/Gallerist-AzureStorage.svg)](https://github.com/Neoteroi/Gallerist-AzureStorage/blob/main/LICENSE)
+
 # Gallerist-AzureStorage
 Gallerist classes for Azure Storage: implements reading image files from Azure
 Blob Service, and writing of resized pictures to the same.
