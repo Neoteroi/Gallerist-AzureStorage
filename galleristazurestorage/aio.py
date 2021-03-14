@@ -1,10 +1,11 @@
 from io import BytesIO
 
-from azure.storage.blob import BlobServiceClient, ContentSettings
-from gallerist.abc import FileInfo, SyncFileStore
+from azure.storage.blob import ContentSettings
+from azure.storage.blob.aio import BlobServiceClient
+from gallerist.abc import FileInfo, FileStore
 
 
-class AzureBlobFileStore(SyncFileStore):
+class AzureBlobAsyncFileStore(FileStore):
     def __init__(self, blob_client: BlobServiceClient, container_name: str):
         self.service = blob_client
         self.container_name = container_name
@@ -12,27 +13,27 @@ class AzureBlobFileStore(SyncFileStore):
     @classmethod
     def from_connection_string(
         cls, connection_string: str, container_name: str
-    ) -> "AzureBlobFileStore":
+    ) -> "AzureBlobAsyncFileStore":
         return cls(
-            BlobServiceClient.from_connection_string(connection_string),
+            BlobServiceClient.from_connection_string(connection_string),  # type: ignore
             container_name,
         )
 
-    def read_file(self, file_path: str) -> bytes:
-        downloader = self.service.get_blob_client(
+    async def read_file(self, file_path: str) -> bytes:
+        downloader = await self.service.get_blob_client(
             self.container_name, file_path
         ).download_blob()
         stream = BytesIO()
-        downloader.readinto(stream)
+        await downloader.readinto(stream)
         return stream.getvalue()
 
-    def write_file(self, file_path: str, data: bytes, info: FileInfo):
+    async def write_file(self, file_path: str, data: bytes, info: FileInfo):
         blob_client = self.service.get_blob_client(self.container_name, file_path)
-        blob_client.upload_blob(
+        await blob_client.upload_blob(
             BytesIO(data),
             content_settings=ContentSettings(content_type=info.mime),
         )
 
-    def delete_file(self, file_path: str):
+    async def delete_file(self, file_path: str):
         blob_client = self.service.get_blob_client(self.container_name, file_path)
-        blob_client.delete_blob()
+        await blob_client.delete_blob()
