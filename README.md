@@ -42,7 +42,7 @@ print(metadata)
 
 ```
 
-# Asynchronous example using executors (recommended)
+# Asynchronous example using executors (recommended for async scenarios)
 
 ```python
 import asyncio
