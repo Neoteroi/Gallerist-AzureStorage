@@ -40,7 +40,7 @@ gallerist = Gallerist(
 )
 
 # the following function call causes the creation of several versions of the
-# image in different sizes; note that this operation is IO bound
+# image in different sizes; note that this operation is CPU bound
 metadata = gallerist.process_image("ORIGINAL_FILE_NAME_ALREADY_ON_STORAGE.png")
 
 print(metadata)
