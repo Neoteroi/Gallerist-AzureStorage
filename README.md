@@ -11,7 +11,8 @@ Blob Service, and writing of resized pictures to the same.
 $ pip install gallerist-azurestorage
 ```
 
-This library is used in
+This library is used in [Torino](https://github.com/Neoteroi/Torino), a file
+explorer for Azure Storage Account, and in
 [Gallerist-AzureFunctions](https://github.com/Neoteroi/Gallerist-AzureFunctions),
 an Azure Functions front-end that uses
 [`Gallerist`](https://github.com/Neoteroi/Gallerist) library, to resize
