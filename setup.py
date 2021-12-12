@@ -8,7 +8,7 @@ def readme():
 
 setup(
     name="gallerist-azurestorage",
-    version="0.0.4",
+    version="0.0.5",
     description="Azure Storage file store for Gallerist",
     long_description=readme(),
     long_description_content_type="text/markdown",
@@ -28,7 +28,7 @@ setup(
     keywords="pictures images web azure storage",
     license="MIT",
     packages=["galleristazurestorage"],
-    install_requires=["gallerist==0.0.5", "azure-storage-blob==12.7.1"],
+    install_requires=["gallerist>=0.0.6", "azure-storage-blob==12.9.0"],
     include_package_data=True,
     zip_safe=False,
 )
