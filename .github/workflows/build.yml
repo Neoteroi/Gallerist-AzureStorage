@@ -37,12 +37,12 @@ jobs:
         id: depcache
         with:
           path: deps
-          key: requirements-pip-${{ matrix.python-version }}-${{ hashFiles('requirements.txt') }}
+          key: requirements-pip-${{ matrix.python-version }}-${{ hashFiles('dev.requirements.txt') }}
 
       - name: Download dependencies
         if: steps.depcache.outputs.cache-hit != 'true'
         run: |
-          pip download --dest=deps -r requirements.txt
+          pip download --dest=deps -r dev.requirements.txt
 
       - name: Install dependencies
         run: |
